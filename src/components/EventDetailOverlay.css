@@ -13,6 +13,7 @@
     box-sizing: border-box;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.25);
+   
 }
 @media (min-width: 50rem) {
     .event-detail-overlay {
@@ -20,6 +21,7 @@
         width: 100%;
         top: auto;
         padding-bottom: 0;
+        border-radius: 10px;
     }
 }
 .event-detail-overlay__container {
@@ -27,6 +29,7 @@
     box-sizing: border-box;
     box-shadow: 0 0 0.25rem 0 #666;
     border: 1px solid #666;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
     padding: 1rem;

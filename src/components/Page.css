@@ -5,6 +5,8 @@
 
 .page {
     margin: 1rem;
+    background: linear-gradient(white,lightgrey);
+    border-radius: 10px;
 }
 .page__header {
     margin-bottom: 1rem;
