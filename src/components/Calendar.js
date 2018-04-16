@@ -14,7 +14,6 @@ export default class Calendar extends PureComponent {
 
     _renderTimeSlots() {
         let {events, onSelectEvent} = this.props;
-
         return new Array(HOURS_DAY)
             .fill(0)
             .map((item, index) => {
