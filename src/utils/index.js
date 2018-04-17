@@ -3,15 +3,7 @@ const _HOUR_DISPLAY_MAP = [
     '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM',
 ]
 
-const genDateStr = (time) => {
-      let dateOnDay = new Date(time);
-      let year = dateOnDay.getFullYear();
-      let month = dateOnDay.getMonth() + 1;
-      let dayOfMonth = dateOnDay.getDate();
-      let startDateTime = `${year}/${month}/${dayOfMonth}`;
-
-      return startDateTime;
-}
+import moment from 'moment';
 
 
 /**
@@ -22,7 +14,7 @@ const genDateStr = (time) => {
  * @returns {array}
  */
 export const filterEventsByDay = (events, timestamp) => (
-  events.filter(event => ( genDateStr(event.start) === genDateStr(timestamp) ))
+  events.filter(event => (getDisplayDate(event.start) === getDisplayDate(timestamp)))
 )
 
 
@@ -47,10 +39,8 @@ export const filterEventsByHour = (events, hour) => (
  * @returns {string} The formatted date
  */
 export const getDisplayDate = (timestamp) => {
-    let date = new Date(timestamp);
-
-    // TODO: Format the date like: "Tuesday, April 11, 2017"
-
+    const date = moment(timestamp).format('dddd, MMMM Do, YYYY')
+    
     return date.toString();
 };
 
