@@ -9,6 +9,16 @@ export default class EventDetailOverlay extends PureComponent {
         event: EVENT_PROP_TYPE.isRequired,
         onClose: PropTypes.func.isRequired
     }
+    
+    componentDidMount() {
+      document.addEventListener('keydown', this.handleEsc.bind(this))
+    }
+    
+    handleEsc(e) {
+      if (e.keyCode === 27) {
+        this.props.onClose();
+      }
+    }
 
     render() {
         let {event, onClose} = this.props;
@@ -28,7 +38,7 @@ export default class EventDetailOverlay extends PureComponent {
         // TODO: Add appropriate ARIA tags to overlay/dialog
         // TODO: Support clicking outside of the overlay to close it
         // TODO: Support clicking ESC to close it
-        console.log(`"${color}"`);
+
         return (
             <section className="event-detail-overlay">
                 <div className="event-detail-overlay__container">
