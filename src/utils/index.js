@@ -10,7 +10,7 @@ import moment from 'moment';
  * @param {number} timestamp - The date to format
  * @returns {string} The formatted date
  */
-export const getDisplayDate = (timestamp) => moment(timestamp).format('dddd, MMMM Do, YYYY')
+export const getDisplayDate = (timestamp) => moment(timestamp).format('dddd, MMMM Do, YYYY');
 
 
 /**
@@ -21,8 +21,10 @@ export const getDisplayDate = (timestamp) => moment(timestamp).format('dddd, MMM
  * @returns {array}
  */
 export const filterEventsByDay = (events, timestamp) => (
-  events.filter(event => (getDisplayDate(event.start) === getDisplayDate(timestamp)))
-)
+  events.filter(event => (
+    getDisplayDate(event.start) === getDisplayDate(timestamp)
+  ))
+);
 
 
 
@@ -45,9 +47,7 @@ export const filterEventsByHour = (events, hour) => (
  * @param {number} hour - The hour
  * @returns {string}
  */
-// TODO: Implement using a more programmatic approach instead of map
-export const getDisplayHour = (hour) => moment().hour(hour).format('hA')
-
+export const getDisplayHour = (hour) => moment().hour(hour).format('hA');
 
 /**
  * Given a list of events, returns the event object whose id matches the specified eventId
