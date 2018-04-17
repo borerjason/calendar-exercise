@@ -16,9 +16,7 @@ export default class TimeSlotEvent extends PureComponent {
             event: {title, color, start},
             onSelect,
         } = this.props;
-
-        // DONE TODO: Need a way to determine that the event is in the past so that it
-        // can be displayed faded-out
+        
         const passed = start < new Date() ? 'time-slot-event-passed' : '';
 
         return (

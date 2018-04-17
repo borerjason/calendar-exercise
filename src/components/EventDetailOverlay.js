@@ -17,14 +17,17 @@ export default class EventDetailOverlay extends PureComponent {
       event: EVENT_PROP_TYPE.isRequired,
       onClose: PropTypes.func.isRequired
   }
+
     componentDidMount() {
       document.addEventListener('keydown', this._handleEscPress);
       document.addEventListener('click', this._handleWindowClick);
+      document.body.style.overflow = 'hidden';
     }
     
     componentWillUnmount() {
       document.removeEventListener('keydown', this._handleEscPress);
       document.removeEventListener('click', this._handleWindowClick);
+      document.body.style.overflow = 'auto';
     }
 
     _handleEscPress(e) {
