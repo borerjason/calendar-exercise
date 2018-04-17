@@ -1,7 +1,7 @@
 ## saving-the-day-calendar-exercise
-> Resolve issues in an react code base
+> Resolve as many issues as possible in a react codebase. 
 
-### Issues Resolved
+## Issues Resolved
 
 [CSS] Each time slot event should take up the full width and vertically stack on top of each other. On larger screens, when there are multiple events for a time slot, they should be evenly divided on the same row.   
 [CSS] Entire page background needs a gradient from white (top) to light gray (bottom)   
@@ -16,6 +16,10 @@
 [JS] Improve naively implemented getDisplayHour helper function   
 [JS] Hitting ESC key should close event details overlay   
 [JS] Clicking outside of an open event details overlay should close the overlay  
-[JS/HTML] Event detail overlay is missing proper ARIA attributes (one lable added for close button)
+[JS/HTML] Event detail overlay is missing proper ARIA attributes (one label added for close button)
+
+## Additional Libraries Utilized
+
+- Moment.js
   
 
