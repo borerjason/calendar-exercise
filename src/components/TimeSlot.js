@@ -1,4 +1,5 @@
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {EVENTS_PROP_TYPE} from './constants';
 import {getDisplayHour} from '../utils';
 import TimeSlotEvent from './TimeSlotEvent';
