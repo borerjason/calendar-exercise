@@ -1,4 +1,5 @@
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {filterEventsByHour} from '../utils';
 import {HOURS_DAY} from '../utils/constants';
 import {EVENTS_PROP_TYPE} from './constants';
@@ -14,7 +15,6 @@ export default class Calendar extends PureComponent {
 
     _renderTimeSlots() {
         let {events, onSelectEvent} = this.props;
-
         return new Array(HOURS_DAY)
             .fill(0)
             .map((item, index) => {

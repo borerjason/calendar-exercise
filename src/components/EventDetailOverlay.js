@@ -1,14 +1,46 @@
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {EVENT_PROP_TYPE} from './constants';
 import {getDisplayDate, getDisplayHour} from '../utils';
 
 import './EventDetailOverlay.css';
 
 export default class EventDetailOverlay extends PureComponent {
-    static propTypes = {
-        event: EVENT_PROP_TYPE.isRequired,
-        onClose: PropTypes.func.isRequired
+  constructor(props) {
+    super(props)
+    
+    this._handleEscPress = this._handleEscPress.bind(this);
+    this._handleWindowClick = this._handleWindowClick.bind(this);
+  }
+  
+  static propTypes = {
+      event: EVENT_PROP_TYPE.isRequired,
+      onClose: PropTypes.func.isRequired
+  }
+
+    componentDidMount() {
+      document.addEventListener('keydown', this._handleEscPress);
+      document.addEventListener('click', this._handleWindowClick);
+      document.body.style.overflow = 'hidden';
     }
+    
+    componentWillUnmount() {
+      document.removeEventListener('keydown', this._handleEscPress);
+      document.removeEventListener('click', this._handleWindowClick);
+      document.body.style.overflow = 'auto';
+    }
+
+    _handleEscPress(e) {
+      if (e.keyCode === 27) {
+        this.props.onClose();
+      }
+    }
+
+    _handleWindowClick(e) {
+      if (!e.target.classList.toString().includes('event-detail-overlay')) {
+        this.props.onClose()
+      }
+    } 
 
     render() {
         let {event, onClose} = this.props;
@@ -24,10 +56,8 @@ export default class EventDetailOverlay extends PureComponent {
 
         let displayDateTime = `${displayDate} ${startHourDisplay} - ${endHourDisplay}`;
 
-        // TODO: The event label color should match the event color
-        // TODO: Add appropriate ARIA tags to overlay/dialog
-        // TODO: Support clicking outside of the overlay to close it
-        // TODO: Support clicking ESC to close it
+        // TODO: Add appropriate ARIA tags to overlay/dialog. added aria-label
+
         return (
             <section className="event-detail-overlay">
                 <div className="event-detail-overlay__container">
@@ -35,11 +65,12 @@ export default class EventDetailOverlay extends PureComponent {
                         className="event-detail-overlay__close"
                         title="Close detail view"
                         onClick={onClose}
+                        aria-label="Close"
                     />
                     <div>
                         {displayDateTime}
                         <span
-                            className="event-detail-overlay__color"
+                            className={`event-detail-overlay__color event-detail-overlay__${color}`}
                             title={`Event label color: ${color}`}
                         />
                     </div>
