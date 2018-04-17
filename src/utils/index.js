@@ -5,6 +5,13 @@ const _HOUR_DISPLAY_MAP = [
 
 import moment from 'moment';
 
+/**
+ * Given a numerical timestamp, returns the formatted date string w/o time component
+ * @param {number} timestamp - The date to format
+ * @returns {string} The formatted date
+ */
+export const getDisplayDate = (timestamp) => moment(timestamp).format('dddd, MMMM Do, YYYY')
+
 
 /**
  * Given a list of events and a date, filter the events down to those that
@@ -34,23 +41,13 @@ export const filterEventsByHour = (events, hour) => (
 );
 
 /**
- * Given a numerical timestamp, returns the formatted date string w/o time component
- * @param {number} timestamp - The date to format
- * @returns {string} The formatted date
- */
-export const getDisplayDate = (timestamp) => {
-    const date = moment(timestamp).format('dddd, MMMM Do, YYYY')
-    
-    return date.toString();
-};
-
-/**
  * Given an hour number, returns a display string version
  * @param {number} hour - The hour
  * @returns {string}
  */
 // TODO: Implement using a more programmatic approach instead of map
-export const getDisplayHour = (hour) => _HOUR_DISPLAY_MAP[hour]
+export const getDisplayHour = (hour) => moment().hour(hour).format('hA')
+
 
 /**
  * Given a list of events, returns the event object whose id matches the specified eventId
