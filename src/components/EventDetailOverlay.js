@@ -56,9 +56,7 @@ export default class EventDetailOverlay extends PureComponent {
 
         let displayDateTime = `${displayDate} ${startHourDisplay} - ${endHourDisplay}`;
 
-        // TODO: The event label color should match the event color
-        // TODO: Add appropriate ARIA tags to overlay/dialog
-        // TODO: Support clicking outside of the overlay to close it
+        // TODO: Add appropriate ARIA tags to overlay/dialog. added aria-label
 
         return (
             <section className="event-detail-overlay">
@@ -67,6 +65,7 @@ export default class EventDetailOverlay extends PureComponent {
                         className="event-detail-overlay__close"
                         title="Close detail view"
                         onClick={onClose}
+                        aria-label="Close"
                     />
                     <div>
                         {displayDateTime}
