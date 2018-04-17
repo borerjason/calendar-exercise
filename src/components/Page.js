@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import moment from 'moment';
 import Calendar from './Calendar';
 import EventDetailOverlay from './EventDetailOverlay';
 import {filterEventsByDay, getEventFromEvents, getDisplayDate} from '../utils';
@@ -46,11 +47,17 @@ export default class Page extends PureComponent {
     }
 
     _handlePrev() {
-        // TODO: Update this.state.day to go back 1 day so previous button works
+        // DONE TODO: Update this.state.day to go back 1 day so previous button works
+      const day = this.state.day;
+      const prevDay = moment(day).subtract(1, 'days');
+      this.setState({ day: prevDay });
     }
 
     _handleNext() {
-        // TODO: Update this.state.day to go forward 1 day so next button works
+      // DONE TODO: Update this.state.day to go forward 1 day so next button works
+        const day = this.state.day;
+        const nextDay = moment(day).add(1, 'days');
+        this.setState({day: nextDay});
     }
 
     render() {
